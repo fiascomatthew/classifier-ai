@@ -5,25 +5,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Image Classifier AI</title>
+  <link rel="preconnect" href="https://fonts.bunny.net">
+  <link href="https://fonts.bunny.net/css2?family=Adamina&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./assets/reset.css">
   <link rel="stylesheet" href="./assets/style.css">
   <script src="https://unpkg.com/ml5@1/dist/ml5.js"></script>
 </head>
 
 <body>
-  <h1>Iris classification</h1>
-  <p>Enter the sepal and petal measurements of an iris flower to determine its species</p>
-  <form>
-    <label for="sepal_length">Sepal length</label>
-    <input type="text" name="sepal_length" id="sepal_length"><br>
-    <label for="sepal_width">Sepal width</label>
-    <input type="text" name="sepal_width" id="sepal_width"><br>
-    <label for="petal_length">Petal length</label>
-    <input type="text" name="petal_length" id="petal_length"><br>
-    <label for="petal_width">Petal width</label>
-    <input type="text" name="petal_width" id="petal_width"><br>
-    <button type="submit">Analyser</button>
-  </form>
+  <div class="container">
+    <h1>Classify your iris</h1>
+    <p>Enter the sepal and petal measurements of an iris flower to determine its species</p>
+    <form>
+      <label for="sepal_length">Sepal length</label>
+      <input type="text" name="sepal_length" id="sepal_length"><br>
+      <label for="sepal_width">Sepal width</label>
+      <input type="text" name="sepal_width" id="sepal_width"><br>
+      <label for="petal_length">Petal length</label>
+      <input type="text" name="petal_length" id="petal_length"><br>
+      <label for="petal_width">Petal width</label>
+      <input type="text" name="petal_width" id="petal_width"><br>
+      <button class="form__analyze" type="submit">Analyze</button>
+    </form>
+  </div>
 
   <script src="./assets/sketch.js"></script>
 </body>
