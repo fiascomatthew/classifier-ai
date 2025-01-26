@@ -1,47 +1,49 @@
 let classifier;
+
 let options = {
   task: "classification",
   debug: true,
 };
 
+const form = document.querySelector("form");
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  let sepallength = Number(form.sepal_length.value);
+  let sepalwidth = Number(form.sepal_width.value);
+  let petallength = Number(form.petal_length.value);
+  let petalwidth = Number(form.petal_width.value);
+
+  classifier.classify([sepallength, sepalwidth, petallength, petalwidth], handleResults);
+})
+
 setup();
-
-let sepallength = 4.4;
-let sepalwidth = 3.8;
-let petallength = 1.5;
-let petalwidth = 0.1;
-let label = "Iris-setosa";
-
 
 async function setup() {
   ml5.setBackend("webgl");
   classifier = ml5.neuralNetwork(options);
   const data = await processCSV();
-  console.log(data);
+
   for (let i = 0; i < data.length; i++) {
     let item = data[i];
     let inputs = [item.sepallength, item.sepalwidth, item.petallength, item.petalwidth];
     let outputs = [item.label];
     classifier.addData(inputs, outputs);
-    classifier.normalizeData();
   }
+
+  classifier.normalizeData();
 
   const trainingOptions = {
     epochs: 16,
     batchSize: 6,
   };
 
-  console.log(classifier);
   classifier.train(trainingOptions, finishedTraining);
 }
 
 function finishedTraining() {
-  classify();
-}
-
-function classify() {
-  const input = [sepallength, sepalwidth, petallength, petalwidth];
-  classifier.classify(input, handleResults);
+  console.log('hello')
 }
 
 function handleResults(results, error) {
@@ -50,8 +52,7 @@ function handleResults(results, error) {
     return;
   }
   label = results[0].label;
-  console.log(results);
-  classify();
+  console.log(results, label);
 }
 
 async function processCSV() {

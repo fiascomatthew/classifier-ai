@@ -5,12 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Image Classifier AI</title>
+  <link rel="stylesheet" href="./assets/reset.css">
+  <link rel="stylesheet" href="./assets/style.css">
   <script src="https://unpkg.com/ml5@1/dist/ml5.js"></script>
 </head>
 
 <body>
-  <h1>Iris categorization</h1>
-
+  <h1>Iris classification</h1>
+  <p>Enter the sepal and petal measurements of an iris flower to determine its species</p>
   <form>
     <label for="sepal_length">Sepal length</label>
     <input type="text" name="sepal_length" id="sepal_length"><br>
@@ -20,9 +22,10 @@
     <input type="text" name="petal_length" id="petal_length"><br>
     <label for="petal_width">Petal width</label>
     <input type="text" name="petal_width" id="petal_width"><br>
+    <button type="submit">Analyser</button>
   </form>
 
-  <script src="sketch.js"></script>
+  <script src="./assets/sketch.js"></script>
 </body>
 
 </html>
