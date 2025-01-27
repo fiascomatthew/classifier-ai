@@ -5,8 +5,13 @@ let options = {
   debug: true,
 };
 
-const form = document.querySelector("form");
+const trainButton = document.getElementById("trainButton");
+trainButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  setup();
+});
 
+const form = document.querySelector("form");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -17,8 +22,6 @@ form.addEventListener("submit", (e) => {
 
   classifier.classify([sepallength, sepalwidth, petallength, petalwidth], handleResults);
 })
-
-setup();
 
 async function setup() {
   ml5.setBackend("webgl");
