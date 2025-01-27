@@ -34,13 +34,15 @@
   </div>
 
   <div class="result">
-    <div class="train-ai-container">
+    <div class="train-ai">
       <button class="app__button" id="trainButton">Train the AI</button>
-      <p id="trainingStatus" style="display: none">Training the AI... Please wait.</p>
+      <div class="train-ai__loader" style="display: none">
+        <p class="train-ai__text">AI Training...</p>
+        <div class="train-ai__loader-spinner"></div>
+      </div>
     </div>
     <div class="result__container" style="display: none">
-      <h2 class="result__title">Result</h2>
-      <p class="result__text">Species: <span id="result" class="result__value">-</span></p>
+      <p class="result__text"></p>
     </div>
   </div>
 

@@ -9,6 +9,7 @@ const trainButton = document.getElementById("trainButton");
 trainButton.addEventListener("click", (e) => {
   e.preventDefault();
   setup();
+  trainButton.style.display = 'none';
 });
 
 const form = document.querySelector("form");
@@ -21,9 +22,13 @@ form.addEventListener("submit", (e) => {
   let petalwidth = Number(form.petal_width.value);
 
   classifier.classify([sepallength, sepalwidth, petallength, petalwidth], handleResults);
+  form.reset();
 })
 
 async function setup() {
+  document.getElementById('trainButton').style.display = 'none';
+  document.querySelector('.train-ai__loader').style.display = 'flex';
+
   ml5.setBackend("webgl");
   classifier = ml5.neuralNetwork(options);
   const data = await processCSV();
@@ -46,7 +51,10 @@ async function setup() {
 }
 
 function finishedTraining() {
-  console.log('hello')
+  document.querySelector('.form__ai-status').style.display = 'none';
+  document.querySelector('.form__description').style.display = 'block';
+  document.querySelector('.form__fields').style.display = 'block';
+  document.querySelector('.train-ai__loader').style.display = 'none';
 }
 
 function handleResults(results, error) {
@@ -54,8 +62,10 @@ function handleResults(results, error) {
     console.error(error);
     return;
   }
+
   label = results[0].label;
-  console.log(results, label);
+  document.querySelector('.result__text').textContent = `It's an ${label}!`;
+  document.querySelector('.result__container').style.display = 'block';
 }
 
 async function processCSV() {
